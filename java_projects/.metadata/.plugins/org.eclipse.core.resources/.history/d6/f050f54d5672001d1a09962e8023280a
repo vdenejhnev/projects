@@ -1,0 +1,11 @@
+package project1_2;
+
+public class main {
+	public static void main(String[] args) {
+		String block1 = "#";
+		//System.out.println("");
+		//System.out.println("minecraft");
+		
+		
+	}
+}

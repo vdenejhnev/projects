@@ -1,0 +1,111 @@
+unit Unit1;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Buttons;
+
+type
+  TForm1 = class(TForm)
+    Memo1: TMemo;
+    BitBtn1: TBitBtn;
+    Edit1: TEdit;
+    Label1: TLabel;
+    procedure BitBtn1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+function myTrim(S: String):String;
+var
+  i: Integer;
+begin
+  i:=1;
+  while i<length(S) do
+  begin
+    if copy(S,i,2)='  ' then
+      delete(S,i,1)
+    else
+      inc(i);
+    result:=S;
+  end;
+end;
+
+procedure TForm1.BitBtn1Click(Sender: TObject);
+type
+  setLetters = Set of Char;
+var
+  text, word: String;
+  length_word, i, end_pos, k: Integer;
+  parity_word: Boolean;
+  letters_current_unparity_word, letters_current_parity_word, letters_unparity_word, letters_parity_word: setLetters;
+begin
+  text:=Memo1.Text;
+  text:=AnsiLowerCase(text);
+  text:=trimLeft(text);
+  text:=trimRight(text);
+  text:=myTrim(text);
+  text:=text+' ';
+  parity_word:=false;
+
+  letters_unparity_word:=['à'..'ÿ'];
+  letters_parity_word:=['à'..'ÿ'];
+
+  while(pos(' ', text) <> 0) do
+    begin
+      end_pos:=pos(' ', text);
+      k:=end_pos;
+      word:=copy(text, 1, k);
+      length_word:=length(word);
+
+      if(parity_word = false) then
+      begin
+        letters_current_unparity_word:=[];
+
+        for i:=1 to length_word-1 do
+        begin
+          letters_current_unparity_word:=letters_current_unparity_word+[word[i]];
+        end;
+        letters_unparity_word:=letters_unparity_word * letters_current_unparity_word;
+        parity_word:=true;
+      end
+
+      else if(parity_word = true) then
+      begin
+        letters_current_parity_word:=[];
+
+        for i:=1 to length_word-1 do
+        begin
+          letters_current_parity_word:=letters_current_parity_word+[word[i]];
+        end;
+        letters_parity_word:=letters_parity_word * letters_current_parity_word;
+        parity_word:=false;
+      end;
+
+      delete(text, 1, k);
+    end;
+
+    letters_unparity_word:=letters_unparity_word-letters_parity_word;
+
+    Edit1.Text:='';
+
+    for i:=0 to 255 do
+    begin
+      if chr(i) in letters_unparity_word then
+      begin
+        Edit1.Text:=Edit1.Text + chr(i);
+      end;
+    end;
+
+end;
+
+end.

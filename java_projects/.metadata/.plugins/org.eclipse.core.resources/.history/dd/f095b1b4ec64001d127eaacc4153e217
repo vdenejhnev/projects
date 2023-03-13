@@ -1,0 +1,10 @@
+package project1_1;
+
+public class Main {
+	public static void main(String[] args) {
+		double a = 10.8;
+		double b = 8;
+		double c = a + b;
+		System.out.println(c);
+	}
+}

@@ -1,0 +1,10 @@
+package project1_1;
+
+public class Main {
+	public static void main(String[] args) {
+		double a = 10;
+		String b = "minecraft minecraft minecraft minecraft minecraft minecraft minecraft minecraft minecraft minecraft minecraft minecraft minecraft minecraft minecraft minecraft ";
+		
+		System.out.println(b);
+	}
+}

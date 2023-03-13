@@ -1,0 +1,56 @@
+DROP TABLE Doctors, Specialiations, Workstations, Patients, Specialiations_Doctors, Diagnoses, Schedule, Manipulations;
+
+CREATE TABLE Doctors(
+	id SERIAL PRIMARY KEY,
+	name varchar(255) NOT NULL
+);
+
+CREATE TABLE Specializations(
+	id SERIAL PRIMARY KEY,
+	name varchar(50) NOT NULL
+);
+
+
+CREATE TABLE Workstations(
+	id SERIAL PRIMARY KEY,
+	name varchar(20) NOT NULL
+);
+
+
+CREATE TABLE Patients(
+	id SERIAL PRIMARY KEY,
+	name varchar(255) NOT NULL,
+	birthday date NOT NULL
+);
+
+CREATE TABLE Specializations_Doctors(
+	id SERIAL PRIMARY KEY,
+	doctor integer REFERENCES Doctors(id) ON DELETE CASCADE NOT NULL,
+	specialization integer REFERENCES Specializations(id) ON DELETE CASCADE NOT NULL
+);
+
+CREATE TABLE Diagnoses(
+	id SERIAL PRIMARY KEY,
+	patient integer REFERENCES Patients(id) ON DELETE CASCADE NOT NULL,
+	doctor integer REFERENCES Doctors(id) ON DELETE CASCADE NOT NULL,
+	diagnosis varchar(255) NOT NULL
+);
+
+CREATE TABLE Schedule(
+	id SERIAL PRIMARY KEY,
+	doctor integer REFERENCES Doctors(id) ON DELETE CASCADE NOT NULL,
+	day integer NOT NULL,
+	start_time time without time zone NOT NULL,
+	end_time time without time zone NOT NULL,
+	workstation integer REFERENCES Workstations(id) ON DELETE CASCADE NOT NULL
+);
+
+CREATE TABLE Manipulations (
+	id SERIAL PRIMARY KEY,
+	doctor integer REFERENCES Doctors(id) ON DELETE CASCADE NOT NULL,
+	patient integer REFERENCES Patients(id) ON DELETE CASCADE NOT NULL,
+	manipulation varchar(255) NOT NULL,
+	specialization integer REFERENCES Specializations(id) ON DELETE CASCADE NOT NULL,
+	start_time timestamp without time zone NOT NULL,
+	end_time timestamp without time zone NOT NULL
+);

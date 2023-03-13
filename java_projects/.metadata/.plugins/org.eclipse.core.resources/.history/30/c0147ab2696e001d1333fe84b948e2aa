@@ -1,0 +1,15 @@
+package project2;
+
+public class project2_1 {
+	public static void main(String[] args) {
+        int a = 5;
+        int b = 4;
+        int c = 6;
+        
+        sum_1(15, 18, 7);
+    }
+	
+	public static void sum_1(int n, int m, int k) {
+		System.out.println(n + m + k);
+	}
+}

@@ -1,0 +1,10 @@
+total 48
+drwxrwxrwx 1 vyacheslav vyacheslav  4096 Dec  5 02:21 obj
+drwxrwxrwx 1 vyacheslav vyacheslav  4096 Dec  5 02:21 bin
+-rwxrwxrwx 1 vyacheslav vyacheslav 26384 Dec  6 11:15 main
+-rwxrwxrwx 1 vyacheslav vyacheslav 15405 Dec  6 10:40 main.c
+-rwxrwxrwx 1 vyacheslav vyacheslav  1001 Dec  5 02:21 shell.cbp
+-rwxrwxrwx 1 vyacheslav vyacheslav   114 Dec  5 02:21 shell.depend
+-rwxrwxrwx 1 vyacheslav vyacheslav    22 Dec  6 10:07 file2
+-rwxrwxrwx 1 vyacheslav vyacheslav     8 Dec  6 10:07 file1
+-rwxrwxrwx 1 vyacheslav vyacheslav     0 Dec  6 11:18 f

@@ -1,0 +1,19 @@
+package project2;
+
+public class project2_1 {
+	public static void main(String[] args) {
+        int a = 5;
+        int b = 4;
+        int c = 6;
+        
+        System.out.println(sum_2(15, 18, 7));
+    }
+	
+	public static void sum_1(int n, int m, int k) {
+		System.out.println(n + m + k);
+	}
+	
+	public static double sum_2(double n, double m, double k) {
+		return n + k + m;
+	}
+}

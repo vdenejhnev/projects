@@ -1,0 +1,96 @@
+DROP TABLE Halls, Places, Performances;
+
+CREATE TABLE Performances (
+	id SERIAL PRIMARY KEY,
+	name varchar(20) NOT NULL,
+	genre varchar(20) NOT NULL,
+	age integer NOT NULL DEFAULT(0),
+	content text
+);
+
+CREATE TABLE Halls (
+	id SERIAL PRIMARY KEY,
+	name varchar(20) NOT NULL
+);
+
+CREATE TABLE Seats_types (
+	id SERIAL PRIMARY KEY,
+	name varchar(40) NOT NULL
+);
+
+CREATE TABLE Shows (
+	id SERIAL PRIMARY KEY,
+	performance integer REFERENCES Performances(id) ON DELETE CASCADE NOT NULL,
+	hall integer REFERENCES Halls(id) ON DELETE CASCADE NOT NULL,
+	shows_date date NOT NULL
+);
+
+CREATE TABLE Seats (
+	id SERIAL PRIMARY KEY,
+	hall integer REFERENCES Halls(id) ON DELETE CASCADE NOT NULL,
+	seat_type integer REFERENCES Seats_types(id) ON DELETE CASCADE NOT NULL,
+	seat_number varchar(5) NOT NULL
+);
+
+CREATE TABLE Shows_price (
+	id SERIAL PRIMARY KEY,
+	show integer REFERENCES Shows(id) ON DELETE CASCADE NOT NULL,
+	seat_type integer REFERENCES Seats_types(id) ON DELETE CASCADE NOT NULL,
+	price numeric NOT NULL
+);
+
+CREATE TABLE Purchased_seats (
+	id SERIAL PRIMARY KEY,
+	seat integer REFERENCES Seats(id) ON DELETE CASCADE NOT NULL,
+	show integer REFERENCES Shows(id) ON DELETE CASCADE NOT NULL,
+	user_name varchar(255) NOT NULL,
+	passport_data varchar(20) NOT NULL
+);
+DROP TABLE Halls, Places, Performances;
+
+CREATE TABLE Performances (
+	id SERIAL PRIMARY KEY,
+	name varchar(20) NOT NULL,
+	genre varchar(20) NOT NULL,
+	age integer NOT NULL DEFAULT(0),
+	content text
+);
+
+CREATE TABLE Halls (
+	id SERIAL PRIMARY KEY,
+	name varchar(20) NOT NULL
+);
+
+CREATE TABLE Seats_types (
+	id SERIAL PRIMARY KEY,
+	name varchar(40) NOT NULL
+);
+
+CREATE TABLE Shows (
+	id SERIAL PRIMARY KEY,
+	performance integer REFERENCES Performances(id) ON DELETE CASCADE NOT NULL,
+	hall integer REFERENCES Halls(id) ON DELETE CASCADE NOT NULL,
+	shows_date date NOT NULL
+);
+
+CREATE TABLE Seats (
+	id SERIAL PRIMARY KEY,
+	hall integer REFERENCES Halls(id) ON DELETE CASCADE NOT NULL,
+	seat_type integer REFERENCES Seats_types(id) ON DELETE CASCADE NOT NULL,
+	seat_number varchar(5) NOT NULL
+);
+
+CREATE TABLE Shows_price (
+	id SERIAL PRIMARY KEY,
+	show integer REFERENCES Shows(id) ON DELETE CASCADE NOT NULL,
+	seat_type integer REFERENCES Seats_types(id) ON DELETE CASCADE NOT NULL,
+	price numeric NOT NULL
+);
+
+CREATE TABLE Purchased_seats (
+	id SERIAL PRIMARY KEY,
+	seat integer REFERENCES Seats(id) ON DELETE CASCADE NOT NULL,
+	show integer REFERENCES Shows(id) ON DELETE CASCADE NOT NULL,
+	user_name varchar(255) NOT NULL,
+	passport_data varchar(20) NOT NULL
+);

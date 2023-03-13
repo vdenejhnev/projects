@@ -1,0 +1,11 @@
+package project1_1;
+
+public class Main {
+	public static void main(String[] args) {
+		int a = 10;
+		double b = 10.8;
+		double d = 6.78;
+		double c = a * b * d;
+		System.out.println(c);
+	}
+}

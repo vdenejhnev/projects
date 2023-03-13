@@ -1,0 +1,17 @@
+package project2_4;
+
+public class main {
+	public static void main(String[] args) {
+		int a;
+		double b;
+		char d;
+		String h; 
+		System.out.println(a(2.5, 4, "dsdfdsfdsffsd"));
+	}
+	
+	public static double a(double b, int c, String d) {
+		System.out.println(b + c + d);
+		System.out.println(d);
+		return b+c+d;
+	}
+}

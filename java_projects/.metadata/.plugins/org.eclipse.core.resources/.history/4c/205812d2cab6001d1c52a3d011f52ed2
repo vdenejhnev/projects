@@ -1,0 +1,14 @@
+package proj1;
+
+public class Proj1 {
+	public static void main(String[] args) {
+		int a = 5; 
+		double b = 2.8;
+		char c = 'b';
+		String d = "s";
+		boolean e = false;
+		
+		int f = 5 / 2;
+		System.out.println(f);
+	}
+}

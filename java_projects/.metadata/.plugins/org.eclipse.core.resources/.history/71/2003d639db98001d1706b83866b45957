@@ -1,0 +1,16 @@
+package project2_5;
+
+public class Car {
+	String name;
+	String color;
+	double engine_value; 
+	
+	public Car(String name, String color, double engine_value) {
+		this.name = name;
+		this.color = car_color;
+		this.engine_value = car_engine_value;
+	}
+}
+
+
+//Car('BMW', 'grey', 15.6);

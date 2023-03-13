@@ -1,0 +1,19 @@
+package project2_3;
+
+public class main {
+	public static void main(String[] args) {
+		build_blocks();
+		build_blocks();
+		build_blocks();
+		build_blocks();
+	}
+	
+	public static void build_blocks() {
+		for (int i = 0; i < 5; i++) {
+			for (int j = 0; j < 5; j++) {
+				System.out.print("#");
+			}
+			System.out.println("");
+		}
+	}
+}

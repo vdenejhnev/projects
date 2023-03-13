@@ -1,0 +1,68 @@
+CREATE FUNCTION func1()
+RETURNS SETOF record 
+LANGUAGE 'sql'
+AS $BODY$
+	SELECT performances.name, shows.shows_date FROM shows INNER JOIN performances ON performances.id = shows.performance;
+$BODY$;
+
+CREATE FUNCTION func2(IN CHECK_DATE date)
+RETURNS SETOF record 
+LANGUAGE 'sql'
+AS $BODY$
+	SELECT performances.name, halls.name, shows.shows_date FROM shows 
+		INNER JOIN performances ON performances.id = shows.performance 
+		INNER JOIN halls ON halls.id = shows.hall
+		WHERE DATE(shows.shows_date) = CHECK_DATE
+$BODY$;
+
+CREATE FUNCTION func3(IN performance_name character varying(255))
+RETURNS SETOF record 
+LANGUAGE 'sql'
+AS $BODY$
+	SELECT performances.name, halls.name, shows.shows_date, halls.seats_count - COUNT(purchased_seats.id) as ticets_count FROM shows 
+		INNER JOIN performances ON performances.id = shows.performance 
+		INNER JOIN halls ON halls.id = shows.hall
+		INNER JOIN purchased_seats ON purchased_seats.show = shows.id
+		WHERE performances.name = performance_name
+		GROUP BY performances.id, halls.id, shows.id
+$BODY$;
+
+
+CREATE FUNCTION func4(IN performance_name character varying(255), IN check_date date)
+RETURNS SETOF record 
+LANGUAGE 'sql'
+AS $BODY$
+	SELECT performances.name, halls.name, shows.shows_date, seats.seat_number AS seat_number, seats_types.name AS type FROM shows 
+		INNER JOIN performances ON performances.id = shows.performance 
+		INNER JOIN halls ON halls.id = shows.hall
+		INNER JOIN purchased_seats ON purchased_seats.show = shows.id
+		INNER JOIN seats ON seats.hall = halls.id
+		INNER JOIN seats_types ON seats_types.id = seats.seat_type
+		WHERE (performances.name = 'Вишневый сад') AND (DATE(shows.shows_date) = '2023-01-15') AND (seats.id <> purchased_seats.seat);
+$BODY$;
+
+
+CREATE FUNCTION func7()
+RETURNS SETOF record 
+LANGUAGE 'sql'
+AS $BODY$
+	SELECT performances.name, SUM(shows_price.price) FROM shows 
+		LEFT JOIN performances ON performances.id = shows.performance 
+		LEFT JOIN purchased_seats ON purchased_seats.show = shows.id
+		LEFT JOIN seats ON seats.id = purchased_seats.seat
+		LEFT JOIN seats_types ON seats_types.id = seats.seat_type
+		LEFT JOIN shows_price ON shows_price.seat_type = seats_types.id	
+		GROUP BY performances.id
+$BODY$;
+
+CREATE FUNCTION func8()
+RETURNS SETOF record 
+LANGUAGE 'sql'
+AS $BODY$
+	SELECT performances.name, COUNT (purchased_seats.id) FROM shows 
+		LEFT JOIN performances ON performances.id = shows.performance 
+		LEFT JOIN purchased_seats ON purchased_seats.show = shows.id
+		GROUP BY performances.id
+		ORDER BY COUNT (purchased_seats.id) DESC
+		LIMIT 10
+$BODY$;

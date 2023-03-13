@@ -1,0 +1,15 @@
+package project2;
+
+public class project2_1 {
+	public static void main(String[] args) {
+        double a = 5;
+        double b = 6;
+        double c = 0;
+
+        if (c > 0) {
+            System.out.println(a + b);
+        }else { 
+            System.out.println(a - b);
+            }
+    }
+}

@@ -1,0 +1,29 @@
+package project1_1;
+
+public class Main {
+	public static void main(String[] args) {
+		int a = 10;
+		double b = 10.8;
+		double d = 6.78;
+		double c = (a - b) * d;
+		
+		if (a < 8) {
+			System.out.println(b + d);
+		} 
+		else if (a > 12) {
+			System.out.println(b - d);
+		}
+		else if (a > 24) {
+			System.out.println(b - d);
+		}
+		else if (a > -10) {
+			System.out.println(b - d);
+		}
+		else if (a > 10) {
+			System.out.println(b - d);
+		}
+		else {
+			System.out.println(b * d);
+		}
+	}
+}

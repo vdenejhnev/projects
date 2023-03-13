@@ -1,0 +1,15 @@
+package project2_4;
+
+public class main {
+	public static void main(String[] args) {
+		int a;
+		double b;
+		char d;
+		String h; 
+		a(2, 4);
+	}
+	
+	public static void a(int b, int c) {
+		System.out.println(b + c);
+	}
+}

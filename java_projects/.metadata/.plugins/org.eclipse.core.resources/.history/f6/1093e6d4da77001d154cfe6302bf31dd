@@ -1,0 +1,23 @@
+package project2_2;
+
+public class main {
+	public static void main(String[] args) {
+		 int[][] inventar = new int[9][2]; 
+		 String[] objects = new String[] {"grass", "earth", "sand", "meat", "stoun", "redstoun", "water", "ice", "gold", "lava"};
+		 
+		 for (int item = 0; item < 9; item++) {
+			 inventar[item][0] = item;
+			 
+			 if (item == 5) {
+				 inventar[item][1] = 64;
+			 }
+		 }
+		 
+		 inventar[6][0] = 9;
+		 
+		 for (int item = 0; item < 9; item++) {
+			 System.out.print(objects[inventar[item][0]] + " ");
+			 System.out.println(inventar[item][1]);
+		 }
+	}
+}

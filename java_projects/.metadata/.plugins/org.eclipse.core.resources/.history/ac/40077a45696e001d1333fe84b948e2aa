@@ -1,0 +1,13 @@
+package project2;
+
+public class project2_1 {
+	public static void main(String[] args) {
+        double a = 5;
+        int b = 4;
+        double c = 0;
+    }
+	
+	public static void sum_number(int n, int m, int k) {
+		System.out.println(n + m + k);
+	}
+}

@@ -1,0 +1,10 @@
+package project1_2;
+
+public class main {
+	public static void main(String[] args) {
+		int[] inventar = new int[9];
+		
+		System.out.println(inventar);
+	}	
+	
+}

@@ -1,0 +1,19 @@
+package project2;
+
+public class project2_1 {
+	public static void main(String[] args) {
+        double a = 5;
+        int b = 4;
+        double c = 0;
+        
+        switch(b) {
+        	case 6: 
+        		System.out.println("условие выполнено");
+        		break;
+        	default:
+        		System.out.println("условие не выполнено");
+        		break;
+        		
+        }
+    }
+}
